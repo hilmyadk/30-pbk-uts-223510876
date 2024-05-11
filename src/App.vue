@@ -21,17 +21,25 @@ watch(todos, (newVal) => {
 })
 
 const addTodo = () => {
-	if (input_content.value.trim() === '' ) {
-		return
-	}
+    if (input_content.value.trim() === '') {
+        return;
+    }
 
-	todos.value.push({
-		content: input_content.value,
-		done: false,
-		editable: false,
-		createdAt: new Date().getTime()
-	})
-}
+    todos.value.push({
+        content: input_content.value,
+        done: false,
+        editable: false,
+        createdAt: new Date().getTime()
+    });
+};
+
+const toggleEdit = (todo) => {
+    todo.editable = !todo.editable;
+};
+
+const toggleDone = (todo) => {
+    todo.editable = false;
+};
 
 const removeTodo = (todo) => {
 	todos.value = todos.value.filter((t) => t !== todo)
@@ -76,18 +84,20 @@ onMounted(() => {
 			<div class="list" id="todo-list">
 
 				<div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
-					<label>
-						<input type="checkbox" v-model="todo.done" />
-						<span :class="`bubble`"></span>
-					</label>
+    				<label>
+        				<input type="checkbox" v-model="todo.done" />
+        				<span :class="`bubble`"></span>
+ 					</label>
 
-					<div class="todo-content">
-						<input type="text" v-model="todo.content" />
-					</div>
+    			<div class="todo-content">
+        			<input type="text" v-model="todo.content" :readonly="!todo.editable" />
+    			</div>
 
-					<div class="actions">
-						<button class="delete" @click="removeTodo(todo)">Delete</button>
-					</div>
+    			<div class="actions">
+        			<button class="edit" @click="toggleEdit(todo)">Edit</button>
+					<button class="done-button" @click="toggleDone(todo)" v-if="todo.editable">Done</button>
+        			<button class="delete" @click="removeTodo(todo)">Delete</button>
+    			</div>
 				</div>
 
 			</div>
