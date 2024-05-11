@@ -233,3 +233,36 @@ input:checked ~ .bubble::after {
 	text-decoration: line-through;
 	color: var(--grey);
 }
+
+.done-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+	.actions {
+		display: flex;
+		align-items: center;
+	}
+
+	.done-button {
+		margin-right: 10px;
+	}
+}
+
+@media (max-width: 767px) {
+	.actions {
+		display: block;
+		margin-top: 10px;
+	}
+
+	.done-button {
+		margin-right: 0;
+		margin-bottom: 5px;
+	}
+}
