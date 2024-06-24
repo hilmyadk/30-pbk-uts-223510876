@@ -134,7 +134,7 @@ const filteredTodos = computed(() => {
 <style>
 :root {
 	--primary: #c40300;
-	--light: #fff07c;
+	--light: #34a6bf;
 	--grey: #888;
 	--dark: #313154;
 	--danger: #c40300;
@@ -167,15 +167,15 @@ body {
 }
 
 .container {
-	background-color: #fff07c;
-	border-radius: 10px;
+	background-color: #3cd5e3;
+	border-radius: 30px;
 }
 
 section {
 	margin-top: 2rem;
-	margin-bottom: 2rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5em;
+	margin-bottom: 4rem;
+	padding-left: 4rem;
+	padding-right: 4em;
 }
 
 h3 {
